@@ -18,12 +18,11 @@
 <script>
 
  $(document).ready(function(){
-
       $.getJSON($SCRIPT_ROOT + '/getData', function(data) {
-        $("#lineChart).text("yay");
+        $("#lineChart").text("yay");
         <!--         $("#result").text(data.result); -->
       });
       return false;
-)};
+});
 
 </script>
