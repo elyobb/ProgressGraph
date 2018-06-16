@@ -4,7 +4,9 @@
     <title>ProgressGraph</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="{{url_for('static', filename='index.js')}}"></script>
 </head>
 <body>
     <div class="container">
@@ -12,17 +14,6 @@
             <h3 class="text-muted">Progress Graph</h3>
         </div>
     </div>
-    <canvas id="lineChart"></canvas>
+    <canvas id="myChart"></canvas>
 </body>
 </html>
-<script>
-
- $(document).ready(function(){
-      $.getJSON($SCRIPT_ROOT + '/getData', function(data) {
-        $("#lineChart").text("yay");
-        <!--         $("#result").text(data.result); -->
-      });
-      return false;
-});
-
-</script>
