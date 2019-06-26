@@ -15,9 +15,12 @@ RANGE_NAME_2 = '2 Miles!A2:B'
 
 app = Flask(__name__)
 
-def get_sec(time_str):
+def get_time(time_str):
     m, s, ms = time_str.split(':')
-    return int(m) * 60 + int(s) + int(ms) * 1000
+    minutes = int(m)
+    minutes += int(s)/60
+    minutes += int(ms) * 1000 / 60
+    return minutes
 
 def connect():
     # Setup the Sheets API
@@ -51,14 +54,14 @@ def retrieve_data():
     dict1 = {}
     for row in values1:
         timeStr = row[1]
-        sec = get_sec(timeStr)
-        dict1[row[0]] = str(sec)
+        time = get_time(timeStr)
+        dict1[row[0]] = str(time)
 
     dict2 = {}
     for row in values2:
         timeStr = row[1]
-        sec = get_sec(timeStr)
-        dict2[row[0]] = str(sec)
+        time = get_time(timeStr)
+        dict2[row[0]] = str(time)
 
     return json.dumps({
         "1": dict1,
