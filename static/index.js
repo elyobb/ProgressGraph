@@ -39,16 +39,30 @@
             options: {
                 scales: {
                  xAxes: [{
+                    ticks: {
+                    autoSkip: false,
+                    maxRotation: 90,
+                    minRotation: 45
+                    },
                     type: 'time',
                     distribution: 'series',
-                        time: {
-                            unit: 'week'
-                        }
+                    time: {
+                        unit: 'month'
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                      }
+
                     }],
                  yAxes: [{
                       ticks: {
-                            suggestedMin: 300
-                          }
+                            suggestedMin: 15
+                          },
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Time (min)'
+                      }
 
                  }]
                 }
